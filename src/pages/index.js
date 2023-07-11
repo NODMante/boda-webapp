@@ -1,13 +1,22 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Dashboard from './dashboard'
+import { URLS } from "@/constants/routes";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 
-const inter = Inter({ subsets: ["latin"] });
+const Home = () => {
+  const router = useRouter();
+  const [cookies] = useCookies(["admin"]);
+  const admin = cookies.admin;
 
-export default function Home() {
-  return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    ></main>
-  );
-}
+  useEffect(() => {
+    if (admin) {
+      router.push(URLS.protected.dashboard);
+    } else {
+      router.push(URLS.protected.dashboard);
+    }
+  }, [router, admin]);
+
+  return null;
+};
+
+export default Home;
