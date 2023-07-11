@@ -1,9 +1,10 @@
+import ProtectedRoute from '@/tools/components/protected-route/protected-route'
 import React from 'react'
 
-const Dashboard = () => {
+const Dashboard = ({user}) => {
   return (
-    <div>Dashboard</div>
+    <div className=" h-full">Dashboard</div>
   )
 }
 
-export default Dashboard
+export default ProtectedRoute(Dashboard)
