@@ -1,27 +1,140 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "nunito";
+  src: url("../../public/nunito/Nunito-Medium.ttf");
+  /* src: url("../"); */
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "nunito";
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    background: #fafafc;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-blue-900 font-semibold;
+  }
+
+  h1 {
+    @apply text-[2rem];
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+
+  h4 {
+    @apply text-base;
+  }
+
+  h5 {
+    @apply text-sm;
+  }
+
+  h6 {
+    @apply text-xs;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply w-3;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-indigo-300;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  .input {
+    @apply p-2.5 rounded-lg border text-sm bg-white text-black outline-0 w-full;
+  }
+
+  .input-disabled {
+    @apply p-2.5 rounded-lg border text-sm bg-gray-100 text-gray-600 outline-0 w-full;
+  }
+
+  .menu-icon {
+    @apply text-white w-5 h-5;
+  }
+
+  .button-indigo {
+    @apply py-1.5 px-3 bg-indigo-800 rounded-lg text-sm text-center cursor-pointer text-white grid place-items-center w-full;
+  }
+
+  .button-light {
+    @apply py-1.5 px-3 bg-blue-100 text-blue-800 text-sm flex justify-center items-center w-fit rounded-lg;
+  }
+
+  .button-transparent {
+    @apply py-1.5 px-3 text-indigo-800 text-sm flex justify-center items-center border border-indigo-800 w-fit rounded-lg hover:bg-indigo-800 hover:text-white duration-100;
+  }
+  .button-blue {
+    @apply py-1.5 px-3 bg-blue-800 rounded-lg text-sm text-center cursor-pointer text-white grid place-items-center;
+  }
+}
+
+@layer utilities {
+}
+
+.PhoneInputInput {
+  outline: none;
+}
+
+.form-shadow {
+  box-shadow: -2px 2px 15px -7px rgba(120, 131, 132, 0.29),
+    inset 0px 0px 2px 1px rgba(255, 255, 255, 0.4) !important;
+}
+
+.form-button:hover {
+  transition: 0.25s ease-in-out;
+  box-shadow: 2px 5px 10px rgb(170, 148, 255);
+}
+
+.force-margin {
+  margin-left: 0px !important;
+}
+.force-rounded {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
